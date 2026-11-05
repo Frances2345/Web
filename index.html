@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de Francesco Moreno Acosta, estudiante de Tecsup. Proyectos de desarrollo web y videojuegos.">
+  <meta name="theme-color" content="#05101d">
+  <title>Frances235 — Portafolio de Francesco Moreno | Tecsup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark">F235</span>
+        <span class="brand-name">Frances235</span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#proyectos">01 Proyectos</a>
+        <a href="#sobre-mi">02 Sobre mí</a>
+        <a href="#contacto">03 Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-half">
+        <span>FRANCES235 // PORTFOLIO SYSTEM</span>
+        <span class="tick-sep">◆</span>
+        <span>DESARROLLO WEB + VIDEOJUEGOS</span>
+        <span class="tick-sep">◆</span>
+        <span>TECSUP // LIMA, PERÚ</span>
+        <span class="tick-sep">◆</span>
+        <span>PLAYER ONE READY</span>
+        <span class="tick-sep">◆</span>
+        <span>STATUS: AVAILABLE</span>
+        <span class="tick-sep">◆</span>
+      </div>
+      <div class="ticker-half">
+        <span>FRANCES235 // PORTFOLIO SYSTEM</span>
+        <span class="tick-sep">◆</span>
+        <span>DESARROLLO WEB + VIDEOJUEGOS</span>
+        <span class="tick-sep">◆</span>
+        <span>TECSUP // LIMA, PERÚ</span>
+        <span class="tick-sep">◆</span>
+        <span>PLAYER ONE READY</span>
+        <span class="tick-sep">◆</span>
+        <span>STATUS: AVAILABLE</span>
+        <span class="tick-sep">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-boot">
+          <span class="boot-line"><i class="boot-dot"></i> SYSTEM v2.35 // READY</span>
+          <span class="boot-line">TECSUP · LIMA, PERÚ</span>
+        </div>
+
+        <div class="hero-stage">
+          <div class="code-float code-float--left" aria-hidden="true">
+            <div class="code-head"><span class="code-dot"></span> player.js</div>
+            <pre><code>const player = {
+  name: <span class="tok-str">"Frances"</span>,
+  class: <span class="tok-str">"Developer"</span>,
+  level: <span class="tok-num">235</span>
+};</code></pre>
+          </div>
+
+          <div class="retro-setup">
+            <div class="monitor">
+              <div class="monitor-bezel">
+                <div class="screen">
+                  <div class="screen-chrome">
+                    <span>FRANCES235.EXE</span>
+                    <span class="screen-dots">□ ×</span>
+                  </div>
+                  <div class="screen-body">
+                    <span class="eyebrow">Portafolio · Tecsup</span>
+                    <h1>Hola, soy<br><span class="chrome-text">Francesco Moreno</span><br>Construyo soluciones web.</h1>
+                    <div class="screen-actions">
+                      <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+                      <a class="btn btn-ghost" href="https://github.com/Frances2345" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                  </div>
+                  <div class="screen-foot">
+                    <span>▶ SELECT</span>
+                    <span class="load-bar"><i></i></span>
+                    <span>○ BACK</span>
+                  </div>
+                  <div class="scanlines" aria-hidden="true"></div>
+                  <div class="screen-glare" aria-hidden="true"></div>
+                </div>
+                <div class="monitor-chin">
+                  <span class="brand-led"></span>
+                  <span>FRANCES</span>
+                  <span class="chin-label">MODEL 235</span>
+                  <span class="chin-dots"><i></i><i></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="monitor-neck"></div>
+            <div class="monitor-base"></div>
+            <img class="hero-keyboard" src="assets/img/retro-keyboard.svg" alt="" aria-hidden="true">
+          </div>
+
+          <div class="code-float code-float--right" aria-hidden="true">
+            <div class="code-head"><span class="code-dot"></span> terminal</div>
+            <pre><code><span class="tok-prompt">&gt;</span> boot system...
+<span class="tok-ok">OK</span> projects loaded
+<span class="tok-ok">OK</span> status: available</code></pre>
+          </div>
+        </div>
+
+        <div class="hero-meta">
+          <span>Tecsup · Lima, Perú</span>
+          <span>Abierto a prácticas</span>
+          <span>Disponible para proyectos</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">01 // Trabajo</span>
+            <h2>Proyectos</h2>
+            <p>Proyectos terminados y otros que sigo construyendo paso a paso.</p>
+          </div>
+          <span class="count-pill" id="project-count"></span>
+        </div>
+        <div id="projects-root"></div>
+        <noscript>
+          <p class="noscript">Activa JavaScript para ver la lista de proyectos.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi">
+      <div class="container about-grid">
+        <div class="about-intro">
+          <span class="section-kicker">02 // Perfil</span>
+          <h2>Sobre mí</h2>
+          <div class="about-visual">
+            <img src="assets/img/retro-pc.svg" alt="Ilustración de una computadora retro" width="360" height="260" loading="lazy">
+          </div>
+        </div>
+        <div class="about-text">
+          <p>Soy Francesco Moreno Acosta, estudiante de Tecsup. Me apasiona convertir ideas en interfaces claras, rápidas y accesibles, y disfruto aprender nuevas herramientas aplicándolas en proyectos reales.</p>
+          <p>Actualmente trabajo con HTML, CSS y JavaScript, y sigo ampliando mis conocimientos en desarrollo frontend y videojuegos.</p>
+          <div class="skill-group">
+            <h3>Frontend</h3>
+            <ul class="skills">
+              <li class="chip">HTML5</li>
+              <li class="chip">CSS3</li>
+              <li class="chip">JavaScript</li>
+              <li class="chip">Responsive</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Herramientas</h3>
+            <ul class="skills">
+              <li class="chip">Git</li>
+              <li class="chip">GitHub</li>
+              <li class="chip">VS Code</li>
+              <li class="chip">Figma</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="contact-card">
+          <img class="contact-floppy" src="assets/img/floppy.svg" alt="" aria-hidden="true" loading="lazy" width="120" height="120">
+          <span class="section-kicker">03 // Contacto</span>
+          <h2>Hablemos</h2>
+          <p>¿Tienes un proyecto, una práctica o una idea en mente? Escríbeme y con gusto conversamos.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:tu.correo@tecsup.edu.pe">tu.correo@tecsup.edu.pe</a>
+            <a class="btn btn-ghost" href="https://github.com/Frances2345" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Francesco Moreno Acosta · Frances235</span>
+      <a href="#inicio">Volver arriba</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/projects.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

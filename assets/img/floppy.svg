@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="fdBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#24486b"/>
+      <stop offset="1" stop-color="#0f2a43"/>
+    </linearGradient>
+    <linearGradient id="fdShutter" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8f4ff"/>
+      <stop offset="0.5" stop-color="#9fbcd8"/>
+      <stop offset="1" stop-color="#5d7f9f"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="8" width="92" height="104" rx="6" fill="url(#fdBody)" stroke="#6fa5d8" stroke-width="2"/>
+  <rect x="38" y="10" width="44" height="34" rx="2" fill="url(#fdShutter)" stroke="#cfe8ff"/>
+  <rect x="58" y="14" width="16" height="26" fill="#0a1c2e"/>
+  <rect x="24" y="54" width="72" height="46" rx="3" fill="#0b2137" stroke="#3d8bff"/>
+  <rect x="32" y="63" width="56" height="4" fill="#2ee6f6" opacity="0.8"/>
+  <rect x="32" y="72" width="42" height="4" fill="#3d8bff" opacity="0.7"/>
+  <rect x="32" y="81" width="50" height="4" fill="#8ea9c6" opacity="0.5"/>
+  <rect x="90" y="12" width="8" height="8" fill="#0a1c2e"/>
+  <rect x="20" y="112" width="80" height="3" fill="#3d8bff" opacity="0.4"/>
+</svg>
