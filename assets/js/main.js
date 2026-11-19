@@ -58,14 +58,17 @@
   function buildCard(project, index) {
     var hue = (index * 25 + 200) % 360;
     var done = isDone(project);
+    var cover = project.image
+      ? '<img class="project-cover-img" src="' + escapeHtml(project.image) + '" alt="" loading="lazy" decoding="async" width="800" height="400">'
+      : '<span class="project-initials">' + escapeHtml(getInitials(project.title)) + "</span>";
     return (
       '<article class="project-card reveal" style="--hue: ' + hue + '">' +
-        '<div class="project-cover" aria-hidden="true">' +
+        '<div class="project-cover' + (project.image ? " project-cover--image" : "") + '" aria-hidden="true">' +
+          cover +
           '<span class="project-index">' + String(index + 1).padStart(2, "0") + "</span>" +
           '<span class="status-badge ' + (done ? "status-done" : "status-progress") + '">' +
             (done ? "Terminado" : "En desarrollo") +
           "</span>" +
-          '<span class="project-initials">' + escapeHtml(getInitials(project.title)) + "</span>" +
         "</div>" +
         '<div class="project-body">' +
           '<div class="project-top">' +
@@ -328,9 +331,115 @@
     });
   }
 
+  function initClickBurst() {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var palette = ["#eaf6ff", "#7fe9ff", "#3d8bff", "#9b7bff", "#2ee6f6"];
+    var layer = document.createElement("div");
+    layer.className = "fx-layer";
+    layer.setAttribute("aria-hidden", "true");
+    document.body.appendChild(layer);
+
+    function spawn(x, y) {
+      if (layer.childElementCount > 6) return;
+
+      var burst = document.createElement("div");
+      burst.className = "burst";
+      burst.style.left = x + "px";
+      burst.style.top = y + "px";
+
+      var flash = document.createElement("span");
+      flash.className = "burst-flash";
+      burst.appendChild(flash);
+
+      var ring = document.createElement("span");
+      ring.className = "burst-ring";
+      burst.appendChild(ring);
+
+      var slowRing = document.createElement("span");
+      slowRing.className = "burst-ring burst-ring--slow";
+      burst.appendChild(slowRing);
+
+      for (var i = 0; i < 20; i += 1) {
+        var particle = document.createElement("span");
+        var angle = (Math.PI * 2 * i) / 20 + (Math.random() - 0.5) * 0.45;
+        var distance = 38 + Math.random() * 64;
+
+        particle.className = i % 5 === 0 ? "burst-particle burst-particle--spark" : "burst-particle";
+        particle.style.setProperty("--dx", (Math.cos(angle) * distance).toFixed(1) + "px");
+        particle.style.setProperty("--dy", (Math.sin(angle) * distance).toFixed(1) + "px");
+        particle.style.setProperty("--size", (2 + Math.random() * 3).toFixed(1) + "px");
+        particle.style.setProperty("--delay", (Math.random() * 0.08).toFixed(2) + "s");
+        particle.style.color = palette[i % palette.length];
+        burst.appendChild(particle);
+      }
+
+      layer.appendChild(burst);
+
+      window.setTimeout(function () {
+        if (burst.parentNode) burst.parentNode.removeChild(burst);
+      }, 1300);
+    }
+
+    document.addEventListener("click", function (event) {
+      if (event.detail === 0) return;
+      if (event.target.closest && event.target.closest("a, button, input, textarea, select, label")) return;
+      spawn(event.clientX, event.clientY);
+    });
+  }
+
+  function initScrollPath() {
+    var path = document.createElement("div");
+    path.className = "scroll-path";
+    path.setAttribute("aria-hidden", "true");
+    path.innerHTML =
+      '<span class="scroll-path-label">Scroll</span>' +
+      '<span class="scroll-path-track">' +
+        '<span class="scroll-path-fill"></span>' +
+        '<span class="scroll-path-head"></span>' +
+      "</span>" +
+      '<span class="scroll-path-pct">00</span>';
+    document.body.appendChild(path);
+
+    var fill = path.querySelector(".scroll-path-fill");
+    var head = path.querySelector(".scroll-path-head");
+    var pct = path.querySelector(".scroll-path-pct");
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var doc = document.documentElement;
+      var scrollTop = window.pageYOffset || doc.scrollTop || 0;
+      var maxScroll = doc.scrollHeight - window.innerHeight;
+      var progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+      var enter = reduceMotion ? 1 : Math.min(1, scrollTop / 520);
+      var eased = enter * enter * (3 - 2 * enter);
+
+      path.style.setProperty("--sp-in", eased.toFixed(3));
+      path.style.setProperty("--sp-op", (reduceMotion ? 0.7 : eased).toFixed(3));
+      fill.style.transform = "scaleX(" + progress.toFixed(4) + ")";
+      head.style.left = ((1 - progress) * 100).toFixed(2) + "%";
+      var pctValue = String(Math.round(progress * 100));
+      pct.textContent = pctValue.length < 2 ? "0" + pctValue : pctValue;
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    update();
+  }
+
   renderProjects();
   initReveal();
   initYear();
   initHeroStars();
   initSceneBackground();
+  initClickBurst();
+  initScrollPath();
 })();

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img">
+  <defs>
+    <linearGradient id="space" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050311"/>
+      <stop offset="0.5" stop-color="#0b0a26"/>
+      <stop offset="1" stop-color="#140b2e"/>
+    </linearGradient>
+    <radialGradient id="planet" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#a9f0ff"/>
+      <stop offset="0.45" stop-color="#4f9dff"/>
+      <stop offset="0.8" stop-color="#5a3fbf"/>
+      <stop offset="1" stop-color="#1a0f3a"/>
+    </radialGradient>
+    <linearGradient id="laser" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#eaf6ff"/>
+      <stop offset="0.35" stop-color="#7fe9ff"/>
+      <stop offset="1" stop-color="#2ee6f6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="enemyLaser" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7ae0" stop-opacity="0"/>
+      <stop offset="0.6" stop-color="#ff7ae0"/>
+      <stop offset="1" stop-color="#ffd6f7"/>
+    </linearGradient>
+    <linearGradient id="shipBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9fbff"/>
+      <stop offset="0.35" stop-color="#59c8ff"/>
+      <stop offset="1" stop-color="#0f3f75"/>
+    </linearGradient>
+    <radialGradient id="engine" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.35" stop-color="#7fe9ff"/>
+      <stop offset="1" stop-color="#2ee6f6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="boom" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.25" stop-color="#ffe9a8"/>
+      <stop offset="0.6" stop-color="#ff9d4d" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#ff5c2e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#b9f3ff" opacity="0.08"/>
+    </pattern>
+    <g id="enemy" fill="currentColor">
+      <path d="M0 -15 L10 -4 L27 0 L10 4 L0 15 L-10 4 L-27 0 L-10 -4 Z" stroke="#f3d9ff" stroke-width="1.1"/>
+      <path d="M-9 -10 L-17 -21 M9 -10 L17 -21" stroke="currentColor" stroke-width="1.6" fill="none"/>
+      <circle cx="0" cy="0" r="4.2" fill="#ff7ae0"/>
+      <circle cx="0" cy="0" r="7.5" fill="#ff7ae0" opacity="0.28" filter="url(#blur3)"/>
+    </g>
+  </defs>
+
+  <rect width="800" height="400" fill="url(#space)"/>
+  <ellipse cx="180" cy="240" rx="260" ry="150" fill="#3d8bff" opacity="0.14" filter="url(#blur6)"/>
+  <ellipse cx="620" cy="120" rx="240" ry="140" fill="#9b7bff" opacity="0.18" filter="url(#blur6)"/>
+
+  <g fill="#eaf6ff">
+    <circle cx="40" cy="40" r="1.5" opacity="0.8"/>
+    <circle cx="96" cy="130" r="1.1" opacity="0.55"/>
+    <circle cx="150" cy="66" r="1.9" opacity="0.85"/>
+    <circle cx="210" cy="160" r="1.2" opacity="0.6"/>
+    <circle cx="262" cy="36" r="1.4" opacity="0.7"/>
+    <circle cx="318" cy="110" r="1" opacity="0.5"/>
+    <circle cx="368" cy="52" r="1.6" opacity="0.8"/>
+    <circle cx="430" cy="146" r="1.1" opacity="0.55"/>
+    <circle cx="486" cy="34" r="1.8" opacity="0.8"/>
+    <circle cx="536" cy="196" r="1.2" opacity="0.5"/>
+    <circle cx="592" cy="62" r="1.4" opacity="0.7"/>
+    <circle cx="664" cy="180" r="1" opacity="0.5"/>
+    <circle cx="718" cy="90" r="1.7" opacity="0.75"/>
+    <circle cx="764" cy="228" r="1.3" opacity="0.6"/>
+    <circle cx="86" cy="286" r="1.2" opacity="0.5"/>
+    <circle cx="690" cy="310" r="1.4" opacity="0.55"/>
+    <circle cx="330" cy="250" r="1" opacity="0.45"/>
+    <circle cx="470" cy="290" r="1.2" opacity="0.5"/>
+  </g>
+
+  <g>
+    <circle cx="662" cy="112" r="96" fill="#7b5cff" opacity="0.25" filter="url(#blur6)"/>
+    <circle cx="662" cy="112" r="74" fill="url(#planet)"/>
+    <ellipse cx="662" cy="112" rx="122" ry="30" transform="rotate(-18 662 112)" fill="none" stroke="#a9c7ff" stroke-width="2" opacity="0.55"/>
+    <ellipse cx="662" cy="112" rx="108" ry="24" transform="rotate(-18 662 112)" fill="none" stroke="#7fe9ff" stroke-width="1" opacity="0.35"/>
+    <circle cx="636" cy="86" r="16" fill="#dff7ff" opacity="0.2"/>
+  </g>
+
+  <g stroke="url(#laser)" stroke-width="3" stroke-linecap="round" opacity="0.95">
+    <line x1="400" y1="300" x2="400" y2="120"/>
+    <line x1="400" y1="300" x2="322" y2="150"/>
+    <line x1="400" y1="300" x2="482" y2="150"/>
+  </g>
+  <g stroke="url(#enemyLaser)" stroke-width="2.5" stroke-linecap="round" opacity="0.8">
+    <line x1="300" y1="150" x2="340" y2="290"/>
+    <line x1="520" y1="170" x2="470" y2="290"/>
+  </g>
+
+  <g filter="url(#blur3)" opacity="0.9">
+    <circle cx="400" cy="300" r="16" fill="#2ee6f6" opacity="0.35"/>
+  </g>
+
+  <g>
+    <g transform="translate(400 348)">
+      <ellipse cx="0" cy="14" rx="52" ry="14" fill="url(#engine)" opacity="0.75"/>
+      <polygon points="0,-38 15,0 46,16 19,21 11,36 0,27 -11,36 -19,21 -46,16 -15,0" fill="url(#shipBody)" stroke="#bff4ff" stroke-width="1.6"/>
+      <polygon points="0,-26 8,2 18,8 0,8 -18,8 -8,2" fill="#eafcff" opacity="0.85"/>
+      <polygon points="-46,16 -31,20 0,27 -31,26" fill="#2a86c9" opacity="0.7"/>
+      <polygon points="46,16 31,20 0,27 31,26" fill="#2a86c9" opacity="0.7"/>
+      <rect x="-6" y="24" width="12" height="14" rx="5" fill="#dffbff"/>
+      <circle cx="0" cy="40" r="9" fill="url(#engine)"/>
+    </g>
+  </g>
+
+  <g>
+    <ellipse cx="400" cy="128" rx="120" ry="70" fill="#ff7ae0" opacity="0.12" filter="url(#blur6)"/>
+    <use href="#enemy" transform="translate(400 116) scale(1.15)" style="color:#ff7ae0"/>
+    <use href="#enemy" transform="translate(316 146) scale(0.95)" style="color:#9b7bff"/>
+    <use href="#enemy" transform="translate(484 146) scale(0.95)" style="color:#9b7bff"/>
+    <use href="#enemy" transform="translate(250 108) scale(0.9)" style="color:#7fe9ff"/>
+    <use href="#enemy" transform="translate(550 108) scale(0.9)" style="color:#7fe9ff"/>
+  </g>
+
+  <g>
+    <circle cx="484" cy="142" r="22" fill="url(#boom)"/>
+    <g stroke="#ffe9a8" stroke-width="2" stroke-linecap="round" opacity="0.9">
+      <line x1="484" y1="142" x2="512" y2="120"/>
+      <line x1="484" y1="142" x2="456" y2="164"/>
+      <line x1="484" y1="142" x2="516" y2="158"/>
+      <line x1="484" y1="142" x2="452" y2="126"/>
+    </g>
+    <circle cx="484" cy="142" r="7" fill="#fff6dc"/>
+  </g>
+
+  <g stroke="#2ee6f6" stroke-width="1" opacity="0.4" fill="none">
+    <path d="M28 54 L28 28 L54 28"/>
+    <path d="M772 28 L746 28 L746 54"/>
+    <path d="M28 346 L28 372 L54 372"/>
+    <path d="M746 372 L772 372 L772 346"/>
+  </g>
+
+  <rect width="800" height="400" fill="url(#scan)"/>
+</svg>

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#02060f"/>
+      <stop offset="0.55" stop-color="#071a33"/>
+      <stop offset="1" stop-color="#0b2b4a"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#082238"/>
+      <stop offset="0.4" stop-color="#041422"/>
+      <stop offset="1" stop-color="#01060c"/>
+    </linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a5677"/>
+      <stop offset="0.35" stop-color="#123048"/>
+      <stop offset="1" stop-color="#050d14"/>
+    </linearGradient>
+    <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b759c"/>
+      <stop offset="1" stop-color="#0a2133"/>
+    </linearGradient>
+    <linearGradient id="flash" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff6d8"/>
+      <stop offset="0.35" stop-color="#ffc35c"/>
+      <stop offset="1" stop-color="#ff7a18" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#eaf6ff"/>
+      <stop offset="0.55" stop-color="#9fd8ff"/>
+      <stop offset="1" stop-color="#3d8bff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2ee6f6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#2ee6f6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#9fe8ff" opacity="0.1"/>
+    </pattern>
+    <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="400" fill="url(#sky)"/>
+  <ellipse cx="170" cy="120" rx="220" ry="100" fill="#3d8bff" opacity="0.16" filter="url(#blur6)"/>
+  <ellipse cx="620" cy="200" rx="240" ry="110" fill="#7b5cff" opacity="0.14" filter="url(#blur6)"/>
+
+  <g fill="#eaf6ff">
+    <circle cx="60" cy="52" r="1.6" opacity="0.8"/>
+    <circle cx="120" cy="94" r="1.1" opacity="0.6"/>
+    <circle cx="200" cy="44" r="1.9" opacity="0.85"/>
+    <circle cx="268" cy="120" r="1.2" opacity="0.55"/>
+    <circle cx="330" cy="70" r="1.5" opacity="0.75"/>
+    <circle cx="402" cy="36" r="1.2" opacity="0.6"/>
+    <circle cx="486" cy="86" r="1.7" opacity="0.8"/>
+    <circle cx="552" cy="42" r="1.1" opacity="0.55"/>
+    <circle cx="712" cy="52" r="1.6" opacity="0.75"/>
+    <circle cx="760" cy="120" r="1.2" opacity="0.6"/>
+    <circle cx="90" cy="170" r="1.2" opacity="0.5"/>
+    <circle cx="740" cy="200" r="1.4" opacity="0.5"/>
+  </g>
+
+  <circle cx="650" cy="80" r="54" fill="url(#moon)"/>
+  <circle cx="650" cy="80" r="26" fill="#dff3ff" opacity="0.85"/>
+
+  <ellipse cx="400" cy="268" rx="420" ry="46" fill="url(#halo)"/>
+  <rect x="0" y="264" width="800" height="136" fill="url(#sea)"/>
+  <g stroke="#2ee6f6" stroke-width="1" opacity="0.18" fill="none">
+    <path d="M0 292 H800"/>
+    <path d="M0 318 H800"/>
+    <path d="M0 348 H800"/>
+    <path d="M0 378 H800"/>
+  </g>
+  <g stroke="#8fe8ff" stroke-width="1" opacity="0.25" fill="none">
+    <path d="M60 286 l26 0 M120 286 l18 0 M600 280 l34 0 M700 292 l28 0"/>
+    <path d="M30 330 l40 0 M240 336 l30 0 M520 342 l44 0 M680 352 l30 0"/>
+  </g>
+
+  <g opacity="0.5">
+    <polygon points="34,286 118,286 128,296 104,304 48,304 34,296" fill="#0a2236" stroke="#2c6d8c" stroke-width="1"/>
+    <rect x="62" y="266" width="8" height="22" fill="#0a2236"/>
+    <rect x="88" y="260" width="8" height="28" fill="#0a2236"/>
+  </g>
+
+  <ellipse cx="420" cy="334" rx="300" ry="18" fill="#2ee6f6" opacity="0.16" filter="url(#blur3)"/>
+
+  <g>
+    <polygon points="130,296 620,296 706,314 668,338 188,338 138,318" fill="url(#hull)" stroke="#5fd4ef" stroke-width="1.6"/>
+    <polygon points="130,296 620,296 642,304 158,304" fill="url(#deck)" opacity="0.9"/>
+    <path d="M130 296 L158 304 L188 338 L668 338 L642 304 L620 296" fill="none" stroke="#8fe8ff" stroke-width="1" opacity="0.4"/>
+
+    <path d="M350 296 L350 236 L382 216 L462 216 L462 296 Z" fill="url(#deck)" stroke="#4fc4e6" stroke-width="1.3"/>
+    <rect x="366" y="234" width="66" height="14" rx="2" fill="#7fe9ff" opacity="0.4"/>
+    <rect x="366" y="256" width="66" height="8" rx="1" fill="#2ee6f6" opacity="0.3"/>
+    <rect x="390" y="274" width="34" height="14" rx="2" fill="#0d2436" stroke="#2a6a86" stroke-width="1"/>
+    <path d="M404 216 L404 176 L416 176 L416 216" fill="#123048" stroke="#4fc4e6" stroke-width="1"/>
+    <line x1="406" y1="190" x2="372" y2="198" stroke="#4fc4e6" stroke-width="1.2" opacity="0.7"/>
+    <line x1="414" y1="186" x2="452" y2="196" stroke="#4fc4e6" stroke-width="1.2" opacity="0.7"/>
+    <circle cx="410" cy="170" r="4.5" fill="#ffdf8a"/>
+    <circle cx="410" cy="170" r="9" fill="#ffdf8a" opacity="0.3" filter="url(#blur3)"/>
+
+    <g>
+      <polygon points="214,296 262,296 278,280 248,262 220,278" fill="#1a3d57" stroke="#4fc4e6" stroke-width="1.3"/>
+      <rect x="276" y="266" width="104" height="4" rx="2" fill="#3f7f9d"/>
+      <rect x="276" y="276" width="104" height="4" rx="2" fill="#336c88"/>
+      <rect x="276" y="286" width="88" height="4" rx="2" fill="#2b5c74"/>
+      <ellipse cx="388" cy="274" rx="20" ry="12" fill="url(#flash)" opacity="0.9" filter="url(#blur3)"/>
+      <rect x="388" y="270" width="132" height="4" fill="url(#flash)" opacity="0.8"/>
+    </g>
+
+    <g>
+      <polygon points="476,296 524,296 540,280 510,262 482,278" fill="#1a3d57" stroke="#4fc4e6" stroke-width="1.3"/>
+      <rect x="538" y="266" width="98" height="4" rx="2" fill="#3f7f9d"/>
+      <rect x="538" y="276" width="98" height="4" rx="2" fill="#336c88"/>
+      <rect x="538" y="286" width="82" height="4" rx="2" fill="#2b5c74"/>
+      <ellipse cx="644" cy="274" rx="18" ry="11" fill="url(#flash)" opacity="0.85" filter="url(#blur3)"/>
+      <rect x="644" y="270" width="110" height="4" fill="url(#flash)" opacity="0.7"/>
+    </g>
+
+    <rect x="196" y="292" width="10" height="10" fill="#2ee6f6" opacity="0.5"/>
+    <rect x="286" y="292" width="10" height="10" fill="#2ee6f6" opacity="0.4"/>
+    <rect x="560" y="292" width="10" height="10" fill="#2ee6f6" opacity="0.5"/>
+
+    <path d="M706 314 L760 322 L786 336" fill="none" stroke="#8fe8ff" stroke-width="2" opacity="0.5"/>
+    <path d="M160 306 L112 318 L84 330" fill="none" stroke="#8fe8ff" stroke-width="1.6" opacity="0.35"/>
+  </g>
+
+  <g stroke="#2ee6f6" stroke-width="1" opacity="0.4" fill="none">
+    <path d="M700 250 l30 0 M730 250 l0 30"/>
+    <path d="M120 250 l-30 0 M90 250 l0 30"/>
+  </g>
+
+  <rect width="800" height="400" fill="url(#scan)"/>
+</svg>

@@ -2,6 +2,7 @@ window.PROJECTS = [
   {
     title: "Naval Warfare",
     description: "Proyecto final de ciclo con combate naval, mecánicas de estrategia y acción en escenarios marítimos.",
+    image: "assets/img/project-naval-warfare.svg",
     tags: ["Juego", "Estrategia"],
     status: "done",
     repo: "https://github.com/Diego27SEN/NavalWarfare-PFINAL3CICLO-JDF",
@@ -11,6 +12,7 @@ window.PROJECTS = [
   {
     title: "Beyond the Stars",
     description: "Aventura de exploración espacial más allá de la galaxia conocida.",
+    image: "assets/img/project-beyond-stars.svg",
     tags: ["Juego", "Aventura"],
     status: "done",
     repo: "https://github.com/Frances2345/Beyond_The_Stars_Beta",
@@ -20,6 +22,7 @@ window.PROJECTS = [
   {
     title: "Groun Rumble",
     description: "Proyecto en desarrollo centrado en exploración y combate terrestre.",
+    image: "assets/img/project-buildings.svg",
     tags: ["Juego", "Acción"],
     status: "in-progress",
     repo: "",
