@@ -148,7 +148,189 @@
     if (year) year.textContent = new Date().getFullYear();
   }
 
+  function initHeroStars() {
+    var field = document.querySelector(".hero-stars");
+    if (!field) return;
+
+    var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      field.innerHTML = "";
+      return;
+    }
+
+    field.innerHTML = "";
+
+    var palette = [
+      "linear-gradient(135deg, #eaf6ff, #3d8bff)",
+      "linear-gradient(135deg, #d8ecff, #2b7be0)",
+      "linear-gradient(135deg, #f2fbff, #2ee6f6)",
+      "linear-gradient(135deg, #cfe6ff, #4f9dff)"
+    ];
+    var STAR_COUNT = 18;
+    var stars = [];
+
+    function random(min, max) {
+      return min + Math.random() * (max - min);
+    }
+
+    function resetStar(star, fromEdge) {
+      var width = field.clientWidth || window.innerWidth;
+      var height = field.clientHeight || window.innerHeight;
+      var speed = random(170, 300);
+      var slope = random(0.06, 0.2);
+
+      if (fromEdge) {
+        star.x = star.direction > 0 ? random(-160, -30) : random(width + 30, width + 160);
+      } else {
+        star.x = random(-width * 0.1, width * 1.1);
+      }
+
+      star.y = random(-height * 0.1, height * 0.85);
+      star.vx = speed * star.direction;
+      star.vy = speed * slope;
+      star.active = true;
+      star.el.classList.remove("star--collapsed");
+      star.el.style.opacity = "1";
+    }
+
+    function makeStar() {
+      var el = document.createElement("span");
+      var direction = Math.random() < 0.5 ? 1 : -1;
+      var star = {
+        el: el,
+        direction: direction,
+        size: random(8, 17),
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        active: true
+      };
+
+      el.className = "star" + (direction < 0 ? " star--right" : "");
+      el.style.width = star.size + "px";
+      el.style.height = star.size + "px";
+      el.style.background = palette[Math.floor(Math.random() * palette.length)];
+      field.appendChild(el);
+      resetStar(star, false);
+      return star;
+    }
+
+    function spawnCollapse(x, y, size) {
+      var burst = document.createElement("span");
+      burst.className = "star-collapse";
+      burst.style.left = x + "px";
+      burst.style.top = y + "px";
+      burst.style.setProperty("--burst-size", Math.max(size * 2.6, 34) + "px");
+      field.appendChild(burst);
+      window.setTimeout(function () {
+        if (burst.parentNode) burst.parentNode.removeChild(burst);
+      }, 950);
+    }
+
+    function collapse(a, b) {
+      a.active = false;
+      b.active = false;
+      a.el.classList.add("star--collapsed");
+      b.el.classList.add("star--collapsed");
+      spawnCollapse(
+        (a.x + b.x) / 2 + a.size / 2,
+        (a.y + b.y) / 2 + a.size / 2,
+        Math.max(a.size, b.size)
+      );
+
+      window.setTimeout(function () {
+        resetStar(a, true);
+        resetStar(b, true);
+      }, 900);
+    }
+
+    for (var i = 0; i < STAR_COUNT; i += 1) {
+      stars.push(makeStar());
+    }
+
+    var last = performance.now();
+
+    function frame(now) {
+      var dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      var width = field.clientWidth || window.innerWidth;
+      var height = field.clientHeight || window.innerHeight;
+
+      stars.forEach(function (star) {
+        if (!star.active) return;
+
+        star.x += star.vx * dt;
+        star.y += star.vy * dt;
+
+        if (star.direction > 0 && star.x > width + 40) {
+          resetStar(star, true);
+        } else if (star.direction < 0 && star.x < -40) {
+          resetStar(star, true);
+        }
+
+        if (star.y > height + 60) {
+          star.y = random(-60, -10);
+        }
+
+        star.el.style.transform = "translate3d(" + star.x + "px, " + star.y + "px, 0)";
+      });
+
+      for (var a = 0; a < stars.length; a += 1) {
+        if (!stars[a].active) continue;
+        for (var b = a + 1; b < stars.length; b += 1) {
+          if (!stars[b].active || stars[a].direction === stars[b].direction) continue;
+          var dx = (stars[a].x + stars[a].size / 2) - (stars[b].x + stars[b].size / 2);
+          var dy = (stars[a].y + stars[a].size / 2) - (stars[b].y + stars[b].size / 2);
+          if (Math.sqrt(dx * dx + dy * dy) < (stars[a].size + stars[b].size) / 2 + 8) {
+            collapse(stars[a], stars[b]);
+          }
+        }
+      }
+
+      window.requestAnimationFrame(frame);
+    }
+
+    window.requestAnimationFrame(frame);
+  }
+
+  function initSceneBackground() {
+    var body = document.body;
+    var sceneMap = [
+      { id: "inicio", scene: "space" },
+      { id: "proyectos", scene: "tech" },
+      { id: "sobre-mi", scene: "profile" },
+      { id: "contacto", scene: "contact" }
+    ];
+    var sections = [];
+
+    body.setAttribute("data-scene", "space");
+
+    sceneMap.forEach(function (item) {
+      var element = document.getElementById(item.id);
+      if (!element) return;
+      element.setAttribute("data-scene", item.scene);
+      sections.push(element);
+    });
+
+    if (!("IntersectionObserver" in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          body.setAttribute("data-scene", entry.target.getAttribute("data-scene"));
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
   renderProjects();
   initReveal();
   initYear();
+  initHeroStars();
+  initSceneBackground();
 })();

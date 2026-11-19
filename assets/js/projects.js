@@ -18,7 +18,7 @@ window.PROJECTS = [
     year: ""
   },
   {
-    title: "Ground Ruble",
+    title: "Groun Rumble",
     description: "Proyecto en desarrollo centrado en exploración y combate terrestre.",
     tags: ["Juego", "Acción"],
     status: "in-progress",
